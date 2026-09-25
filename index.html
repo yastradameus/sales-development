@@ -1228,7 +1228,8 @@ function applyScen(k){ S.scen=k; Object.assign(S, SCEN[k]); push(); render(); }
 /* ------------------------------------------------------------------ 起動 */
 el("pref").innerHTML = Object.keys(BENCH.pref).map(p=>{
   const b = BENCH.pref[p];
-  return '<option value="'+p+'">'+p+(b.fallback ? "（全国値）" : "（"+b.n+"会場）")+'</option>';
+  /* 会場数は出さない。母数が足りず全国値で代替している県だけ印を付ける */
+  return '<option value="'+p+'">'+p+(b.fallback ? "（全国値）" : "")+'</option>';
 }).join("");
 
 document.addEventListener("input", e=>{
